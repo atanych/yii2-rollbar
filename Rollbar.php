@@ -53,6 +53,10 @@ class Rollbar extends Object
                         'timeout' => $this->timeout,
                         'proxy' => $this->proxy,
                         'enable_utf8_sanitization' => $this->enableUtf8Sanitization,
+                        'checkIgnore' => function ($isUncaught, $exception, $payload) {
+                            \Yii::error('$payload' . print_r($payload, true));
+                            return true;
+                        }
                 ],
                 false,
                 false,
